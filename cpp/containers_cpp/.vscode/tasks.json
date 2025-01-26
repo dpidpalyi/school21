@@ -1,0 +1,17 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build tests",
+      "type": "shell",
+      "command": "cmake --build build/Debug --target utests",
+      "presentation": {
+        "reveal": "silent",
+        "focus": true,
+        "showReuseMessage": false,
+      }
+    },
+  ]
+}

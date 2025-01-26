@@ -1,0 +1,18 @@
+#!/bin/bash
+
+printf 'HOSTNAME = %s\n' "$hostname"
+printf 'TIMEZONE = %s\n' "$timezone"
+printf 'USER = %s\n' "$user"
+printf 'OS = %s\n' "$os"
+printf 'DATE = %s\n' "$Date"
+printf 'UPTIME = %s\n' "$up"
+printf 'UPTIME_SEC = %s\n' "$up_sec"
+printf 'IP = %s\n' "$ip_"
+printf 'MASK = %s\n' "$mask"
+printf 'GATEWAY = %s\n' "$gateway"
+printf 'RAM_TOTAL = %s\n' "$ram_total"
+printf 'RAM_USED = %s\n' "$ram_used"
+printf 'RAM_FREE = %s\n' "$ram_free"
+printf 'SPACE_ROOT = %s\n' "$space_root"
+printf 'SPACE_ROOT_USED = %s\n' "$space_root_used"
+printf 'SPACE_ROOT_FREE = %s\n' "$space_root_free"

@@ -1,0 +1,53 @@
+stages:
+    - build
+    - codestyle
+    - test
+    - deploy
+    - failure_notify
+
+build_job:
+    stage: build
+    tags:
+        - linux_build
+    script: 
+        - make -C src/cat/ build
+        - make -C src/grep/ build
+    artifacts:
+        paths:
+            - src/
+        expire_in: 30 days
+
+codestyle_job:
+    stage: codestyle
+    tags:
+        - linux_build
+    script:
+        - clang-format -n src/{cat,grep}*/*.{c,h} 2>&1 | tee clang_output.txt
+        - if [[ $(cat clang_output.txt | wc -c) -ne 0 ]]; then exit 1; fi
+
+test_job:
+    stage: test
+    tags:
+        - linux_build
+    script:
+        - make -C src/cat/ test | tee test_cat_output.txt
+        - make -C src/grep/ test | tee test_grep_output.txt
+        - if [[ $(grep 'FAILED TESTS' test_cat_output.txt | awk '{ print $4 }') -ne 0 ]]; then exit 1; fi
+        - if [[ $(grep 'FAILED TESTS' test_grep_output.txt | awk '{ print $4 }') -ne 0 ]]; then exit 1; fi
+
+deploy_job:
+    stage: deploy
+    tags:
+        - linux_build
+    script:
+        - sh src/deploy.sh
+        - if [[ $? -ne 0 ]]; then exit 1; fi
+        - sh src/notify.sh 'Passed pipeline'
+
+failure_notify_job:
+    stage: failure_notify
+    tags:
+        - linux_build
+    script:
+        - sh src/notify.sh 'Failed pipeline'
+    when: on_failure

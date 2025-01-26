@@ -1,0 +1,20 @@
+^Lorem ipsum
+elit.$
+sed|Sed
+\bmetus\b
+nulla\s\w+
+^Ut.*consequat\.$
+\b[a-z]{5}\b
+^Donec.*\s\w+\.$
+\d{3}-\d{2}-\d{4}
+^Phasellus.*facilisis\.$
+^lorem
+dolor
+amet
+^Ut
+consectetur
+ipsum
+quisque
+^Nam.*$
+\b[A-Z]{2}\b
+et

@@ -1,0 +1,4 @@
+# The last free checks are tool-specific, related to gtest
+---
+Checks: '-*'
+...

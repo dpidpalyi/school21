@@ -1,0 +1,28 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    // "--platform=linux/arm64",
+    // "--platform=linux/amd64",
+    "--cap-add=SYS_PTRACE"
+  ],
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "twxs.cmake",
+        "ms-vscode.live-server",
+        "vadimcn.vscode-lldb"
+      ]
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopContainer",
+  "containerEnv": {
+    "MAKEFLAGS": "--no-print-directory"
+  },
+  "postAttachCommand": "make clean"
+}

@@ -1,0 +1,10 @@
+# This is simple obj file
+# Commentaries that should pass
+
+v 0.0 0.0 1.0
+v      0.0         1.0 0.0             
+v 1.0 0.0 0.0
+
+# Now we should find facets
+f         1 2 3
+f 3      2   1         

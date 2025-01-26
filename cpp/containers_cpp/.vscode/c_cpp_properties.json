@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/extern/googletest/googletest/include"
+            ]
+        }
+    ],
+    "version": 4
+}
